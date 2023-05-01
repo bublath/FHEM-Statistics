@@ -738,7 +738,7 @@ sub statistics_setStats ($@) {
 	my @stat;
 	@stat = split / /, $dev->{READINGS}{$statReadingName}{VAL};
 	  
-	my $type = ucfirst($type);
+	$type = ucfirst($type);
 
 	if ($type eq "Hour") {
 	  $stat[1] = $value;
@@ -1319,8 +1319,8 @@ __END__
       <a id="statistics-set-doStatistics"></a><li><code>doStatistics</code>
       <br>
       Calculates the current statistic values of all monitored devices.
-      </li>
-	  <a id="statistics-set-setStatistics"></a><li><code>setStatistics device reading period value</code>
+      </li><br>
+	  <a id="statistics-set-setStatistics"></a><li><code>setStatistics  &lt;device&gt;  &lt;reading&gt;  &lt;period&gt;  &lt;value&gt;</code>
       <br>
       Sets a statistic value to a fixed value. Period is one of Hour, Day, Month, Year.
       </li>
