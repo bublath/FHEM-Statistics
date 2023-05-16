@@ -586,8 +586,9 @@ sub statistics_doStatisticMinMaxSingle ($$$$$$)
    my @limits = split / /, AttrVal($name, "limitDecimals", "");
    my $limitDecPlaces=undef;
    foreach my $limit (@limits) {
-     $limit =~ /^$readingName:(\d+)/;
-     $limitDecPlaces=int($1);
+     if ($limit =~ /^$readingName:(\d+)/) {
+		$limitDecPlaces=int($1);
+	 }
    }
   #Only apply maximum if greater than current to avoid trailing zeroes
   $decPlaces = $limitDecPlaces if defined $limitDecPlaces && $decPlaces>$limitDecPlaces; 
@@ -802,8 +803,9 @@ sub statistics_doStatisticDelta ($$$$)
 	  my @limits = split / /, AttrVal($name, "limitDecimals", "");
 	  my $limitDecPlaces=undef;
 	  foreach my $limit (@limits) {
-		$limit =~ /^$readingName:(\d+)/;
-	    $limitDecPlaces=$1;
+		if ($limit =~ /^$readingName:(\d+)/) {
+			$limitDecPlaces=int($1);
+		}
 	  }
 	  #Only apply maximum if greater than current to avoid trailing zeroes
       $decPlaces = $limitDecPlaces if defined $limitDecPlaces && $decPlaces>$limitDecPlaces; 
